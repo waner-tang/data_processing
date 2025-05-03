@@ -1,0 +1,17 @@
+# 保留原有PyCharm忽略规则（可选）
+/shelf/
+/workspace.xml
+/httpRequests/
+/dataSources/
+/dataSources.local.xml
+
+# 新增核心规则
+# 1. 忽略所有文件
+*
+# 2. 允许目录结构（即使目录为空）
+!*/
+# 3. 允许.gitignore自身
+!.gitignore
+# 4. 允许特定后缀文件
+!*.py
+!*.md
