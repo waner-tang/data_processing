@@ -1,0 +1,15 @@
+# 忽略所有文件
+*
+
+# 保留 .gitignore 自己
+!.gitignore
+
+# 允许所有 .py 和 .md 文件
+!**/*.py
+!**/*.md
+
+# 允许 .gitkeep 占位文件
+!**/.gitkeep
+
+# 忽略 PyCharm 配置目录
+.idea/
