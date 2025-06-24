@@ -177,11 +177,11 @@ def process_directory(input_dir, processed_dir, output_image_dir):
 
 if __name__ == "__main__":
     # 输入包含原始 txt 文件的根目录（可包含嵌套子文件夹）
-    input_directory = "data/24040209-M1-problems"
+    input_directory = "data"
     # 预处理后的 txt 文件保存目录（你可以选择是否保留预处理结果）
-    processed_directory = "data_output/24040209-M1-problems/processed_txt"
+    processed_directory = "data_output/output_txt"
     # 可视化图片保存的目录（jpg 格式）
-    output_image_directory = "data_output/24040209-M1-problems/output_images"
+    output_image_directory = "data_output/output_images"
 
     process_directory(input_directory, processed_directory, output_image_directory)
     print("所有文件处理并可视化完成！")

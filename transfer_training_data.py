@@ -52,7 +52,7 @@ def process_directory(input_dir, output_dir):
 
 
 if __name__ == "__main__":
-    input_directory = "data/test"  # 输入文件夹路径
+    input_directory = "data"  # 输入文件夹路径
     output_directory = "data_output/test"  # 输出文件夹路径
 
     # 处理文件夹

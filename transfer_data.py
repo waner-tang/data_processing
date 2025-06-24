@@ -69,16 +69,24 @@ def process_directory(input_dir, output_dir):
         for file in files:
             if file.endswith('.txt'):
                 input_file_path = os.path.join(root, file)
-                relative_path = os.path.relpath(input_file_path, input_dir)
-                output_file_path = os.path.join(output_dir, relative_path)
-
+                
+                # 获取文件名的前6个字符作为新文件名
+                file_name = os.path.basename(file)
+                new_file_name = file_name[:6] + '.txt'
+                
+                # 获取相对路径的目录部分
+                rel_dir = os.path.relpath(root, input_dir)
+                
+                # 组合新的输出路径
+                output_file_path = os.path.join(output_dir, rel_dir, new_file_name)
+                
                 # 处理每个文件
                 process_file(input_file_path, output_file_path)
 
 
 if __name__ == "__main__":
-    input_directory = "data/test/JA1ES24020211-M1"  # 输入文件夹路径
-    output_directory = "data_output/test/JA1ES24020211-M1"  # 输出文件夹路径
+    input_directory = "data"  # 输入文件夹路径
+    output_directory = "data_output"  # 输出文件夹路径
 
     # 处理文件夹
     process_directory(input_directory, output_directory)
