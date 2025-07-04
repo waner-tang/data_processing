@@ -26,7 +26,7 @@ with open('run.log', 'r') as f:
         if train_match:
             epoch = int(train_match.group(1))
             loss = float(train_match.group(2))
-            acc = float(train_match.group(4))
+            acc = float(train_match.group(3))
             # 动态扩展列表长度以适应epoch编号
             if epoch >= len(train_losses):
                 train_losses.extend([None] * (epoch - len(train_losses) + 1))
@@ -38,7 +38,7 @@ with open('run.log', 'r') as f:
         if test_match:
             epoch = int(test_match.group(1))
             loss = float(test_match.group(2))
-            acc = float(test_match.group(4))
+            acc = float(test_match.group(3))
             iou = float(test_match.group(5))
             time = float(test_match.group(6))
             # 动态扩展列表长度以适应epoch编号
@@ -68,8 +68,11 @@ print(f"训练准确率: {best_train_acc:.4f}")
 print(f"测试IoU: {best_test_iou:.4f}")
 print(f"总训练时长: {total_time:.2f} 秒")
 
+# 创建子图
+plt.figure(figsize=(18, 8))
+
 # 绘制损失曲线
-plt.figure(figsize=(12, 6))
+plt.subplot(1, 2, 1)
 plt.plot(train_losses, label='Train Loss', color='blue', linewidth=1)
 plt.plot(test_losses, label='Test Loss', color='red', linewidth=1)
 plt.xlabel('Epoch', fontsize=14)
@@ -77,5 +80,16 @@ plt.ylabel('Loss', fontsize=14)
 plt.title('Loss Curve', fontsize=16)
 plt.legend()
 plt.grid(True, linestyle='--', alpha=0.7)
+
+# 绘制准确率曲线
+plt.subplot(1, 2, 2)
+plt.plot(train_accs, label='Train Accuracy', color='green', linewidth=1)
+plt.plot(test_accs, label='Test Accuracy', color='orange', linewidth=1)
+plt.xlabel('Epoch', fontsize=14)
+plt.ylabel('Accuracy', fontsize=14)
+plt.title('Accuracy Curve', fontsize=16)
+plt.legend()
+plt.grid(True, linestyle='--', alpha=0.7)
+
 plt.tight_layout()
 plt.show()
